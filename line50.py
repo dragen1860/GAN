@@ -64,8 +64,10 @@ def test():
 	plt.figure('real data and generated data')
 	plt_real_y = []
 	plt_fake_y = []
-	plt.plot(plt_fake_y, 'r', label = 'generated data')
-	plt.plot(plt_real_y, 'g', label = 'groudtruth data')
+	plt.plot(plt_fake_y, 'r', label = 'Generated Data')
+	plt.plot(plt_real_y, 'g', label = 'Groudtruth Data')
+	plt.xlabel('Training Epoch')
+	plt.ylabel('Data Distribution')
 	plt.legend()
 
 	for epoch in range(20000):
@@ -110,7 +112,7 @@ def test():
 		g_error.backward()
 		G_optimizer.step()
 
-		if epoch % 100 == 0:
+		if epoch % 30 == 0:
 			plt_real_y.append(d_real_data.mean().data[0])
 			plt_fake_y.append(d_fake_data.mean().data[0])
 			plt.plot(plt_fake_y, 'r')
